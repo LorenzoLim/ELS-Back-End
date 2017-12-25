@@ -1,14 +1,27 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const path = require('path');
+const logger = require('morgan');
+const express = require('express');
+const User = require('./models/User');
+const favicon = require('serve-favicon');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+const index = require('./routes/index');
+const users = require('./routes/users');
 
-var app = express();
+const app = express();
+
+app.get('/users', function (req, res) {
+  User.find().then((users) =>{
+    res.json(users);
+  });
+});
+
+app.post('/users', function (req, res) {
+  const name = req.body.name;
+  User.push(user);
+  res.send(user);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,7 +40,7 @@ app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
