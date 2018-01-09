@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 /* Find user by ID */
 router.get('/users/:id', (req, res) =>{
   User.findById(req.params.id).then((user) =>{
-    console.log(user);
+    console.log(user); 
     res.send(user);
   })
 });
