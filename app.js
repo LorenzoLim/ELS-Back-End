@@ -1,13 +1,11 @@
 const path = require('path');
 const logger = require('morgan');
 const express = require('express');
-const User = require('./models/User');
 const port = process.env.PORT || 7000;
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { mongoose, db } = require('./database');
-
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -15,22 +13,6 @@ const users = require('./routes/users');
 const app = express();
 
 app.use(bodyParser.json())
-
-app.get('/users', (req, res) => {
-  User.find().then((users) =>{
-    res.json(users);
-  });
-});
-
-app.post('/users', (req, res) => {
-  User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password
-  }).then(() => {
-    res.send('Success')
-  })
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
