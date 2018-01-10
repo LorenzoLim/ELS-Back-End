@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 /* Find user by ID */
 router.get('/users/:id', (req, res) =>{
   User.findById(req.params.id).then((user) =>{
-    console.log(user); 
+    console.log(user);
     res.send(user);
   })
 });
@@ -25,9 +25,11 @@ router.get('/users', (req, res) => {
 /* Creates new user*/
 router.post('/users', (req, res) => {
   User.create({
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    role: req.body.role
   }).then(() => {
     res.send('Success')
   })

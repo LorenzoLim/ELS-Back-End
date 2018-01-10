@@ -1,9 +1,11 @@
 const { mongoose, db } = require('../database');
 
 const User = mongoose.model('User', {
-  name: String,
+  firstName: String,
+  lastName: String,
   email: String,
-  password: String
+  password: String,
+  role: ''
 });
 
 module.exports = User;
