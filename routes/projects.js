@@ -1,4 +1,5 @@
 var express = require('express');
+const User = require('../models/Project');
 var router = express.Router();
 
 /* GET projects listing. */
