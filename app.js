@@ -6,16 +6,26 @@ const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { mongoose, db } = require('./database');
+const { initialize, requireJWT, verifyAdmin } = require('./middleware/auth')
 const cors = require('cors');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
+const projects = require('./routes/projects');
 
 const app = express();
 
 app.use(bodyParser.json())
 app.use(cors());
 
+app.get('/admin', requireJWT, verifyAdmin, (req, res) => {
+  res.send('Hello Admin!')
+})
+
+// Routes
+app.use([
+  require('./routes/auth')
+])
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/projects', projects);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,5 +60,13 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(port, (error) => {
+  if (error) {
+    console.log('There was a problem starting the server', error)
+  } else {
+    console.log(`Server is listening on port: ${port} `)
+  }
+})
 
 module.exports = app;

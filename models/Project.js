@@ -8,4 +8,4 @@ const Project = mongoose.model('Project', {
 
 });
 
-module.exports = project;
+module.exports = Project;
