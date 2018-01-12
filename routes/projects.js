@@ -1,49 +1,44 @@
 var express = require('express');
-const User = require('../models/Project');
+const Project = require('../models/Project');
 var router = express.Router();
 
-/* GET projects listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
 /* Find projects by ID */
-router.get('/projects/:id', (req, res) =>{
+router.get('/:id', (req, res) =>{
   Project.findById(req.params.id).then((project) =>{
-    console.log(user);
-    res.send(user);
+    console.log(project);
+    res.send(project);
   })
 });
 
 /* Returns all projects */
-router.get('/projects', (req, res) => {
-  User.find().then((project) =>{
+router.get('/', (req, res) => {
+  Project.find().then((project) =>{
     res.json(projects);
   });
 });
 
 /* Creates new project*/
-router.post('/projects', (req, res) => {
+router.post('/', (req, res) => {
   Project.create({
-     projectNum: String,
-     projectLocation: String,
-     projectName: String,
-     projectStatus: String
+     projectNum: req.body.projectNum,
+     projectLocation: req.body.projectLocation,
+     projectName: req.body.projectName,
+     projectStatus: req.body.projectStatus
   }).then(() => {
     res.send('Success')
   })
 });
 
 /* Update data from database */
-router.put('/projects/:id', function (req,res) {
-  User.findOneAndUpdate(req.params.id, req.body).then((user) =>{
+router.put('/:id', function (req,res) {
+  Project.findOneAndUpdate(req.params.id, req.body).then((project) =>{
     res.send('Updated');
   });
 });
 
 /* Delete data from database */
-router.delete('/projects/:id', function (req,res) {
-  User.findByIdAndRemove(req.params.id).then((project) =>{
+router.delete('/:id', function (req,res) {
+  Project.findByIdAndRemove(req.params.id).then((project) =>{
     res.send('Deleted');
   });
 });
