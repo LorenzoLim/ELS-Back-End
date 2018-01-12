@@ -5,7 +5,6 @@ const Project = mongoose.model('Project', {
 	projectLocation: String,
 	projectName: String,
 	projectStatus: String
-
 });
 
 module.exports = Project;
