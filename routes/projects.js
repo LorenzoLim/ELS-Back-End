@@ -2,19 +2,19 @@ var express = require('express');
 const Project = require('../models/Project');
 var router = express.Router();
 
+/* Returns all projects */
+router.get('/', (req, res) => {
+  Project.find().then((project) =>{
+    res.json(project);
+  });
+});
+
 /* Find projects by ID */
 router.get('/:id', (req, res) =>{
   Project.findById(req.params.id).then((project) =>{
     console.log(project);
     res.send(project);
   })
-});
-
-/* Returns all projects */
-router.get('/', (req, res) => {
-  Project.find().then((project) =>{
-    res.json(projects);
-  });
 });
 
 /* Creates new project*/
