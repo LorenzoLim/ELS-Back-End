@@ -24,8 +24,8 @@ router.post('/', (req, res) => {
      projectLocation: req.body.projectLocation,
      projectName: req.body.projectName,
      projectStatus: req.body.projectStatus
-  }).then(() => {
-    res.send('Success')
+  }).then((project) => {
+    res.send(project)
   })
 });
 
