@@ -72,7 +72,7 @@ const signJWTForUser = (req, res) => {
   )
 
   // Send the JWT to the user!
-  res.send({token: token})
+  res.send({token: token, role: user.role})
 }
 
 const verifyAdmin = (req, res, next) => {
