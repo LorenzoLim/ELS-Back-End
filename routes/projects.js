@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 /* Update data from database */
 router.put('/:id', function (req,res) {
   Project.findOneAndUpdate(req.params.id, req.body).then((project) =>{
-    res.send('Updated');
+    res.send(project);
   });
 });
 
