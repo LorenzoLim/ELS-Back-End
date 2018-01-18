@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* Returns all projects */
 router.get('/', (req, res) => {
-  Project.find().then((project) =>{
+  Project.find().populate('projectUsers').then((project) =>{
     res.json(project);
   });
 });
@@ -23,7 +23,8 @@ router.post('/', (req, res) => {
      projectNum: req.body.projectNum,
      projectLocation: req.body.projectLocation,
      projectName: req.body.projectName,
-     projectStatus: req.body.projectStatus
+     projectStatus: req.body.projectStatus,
+     projectUsers: req.body.projectUsers
   }).then((project) => {
     res.send(project)
   })

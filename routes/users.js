@@ -23,10 +23,9 @@ router.post('/', (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    password: req.body.password,
     role: req.body.role
-  }).then(() => {
-    res.send('Success')
+  }).then((user) => {
+    res.send(user)
   })
 });
 
