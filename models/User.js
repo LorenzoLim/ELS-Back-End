@@ -6,10 +6,10 @@ const userSchema = new mongoose.Schema({
   lastName: String,
   email: String,
   role: String,
-  hours: [{
-    type: String,
-    hours: Number
-  }]
+  hours: [
+    {travel: { type: Number, default: 0 }},
+    {total: { type: Number, default: 0}},
+  ]
 })
 
 userSchema.plugin(passportLocalMongoose, {

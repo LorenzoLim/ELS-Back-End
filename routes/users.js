@@ -17,22 +17,18 @@ router.get('/', (req, res) => {
   });
 });
 
-/* Creates new user*/
-router.post('/', (req, res) => {
-  User.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    role: req.body.role
-  }).then((user) => {
-    res.send(user)
-  })
-});
-
 /* Update data from database */
 router.put('/:id', function (req,res) {
-  User.findOneAndUpdate(req.params.id, req.body).then((user) =>{
+  console.log(req.params.id, 'User ID');
+  User.findOneAndUpdate({_id: req.params.id}, req.body).then((user) =>{
+    // user.startTime = Date.now();
+    console.log('!!!!!')
+    console.log(user);
     res.send('Updated');
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send();
   });
 });
 
