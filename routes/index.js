@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* Get CSV Data */
-router.get('/report.csv',(req, res) => {
+router.get('/csv',(req, res) => {
   res.csv([
     ["a", "b", "c"],
     ["d", "e", "f"]
