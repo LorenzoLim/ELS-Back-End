@@ -18,24 +18,24 @@ userSchema.plugin(passportLocalMongoose, {
 
 userSchema.pre("save",function(next) {
   if (this.hours.length == 0)
-    this.hours.push({Project: 0});
-    this.hours.push({bSup_bDev: 0});
-    this.hours.push({bSup_commercial: 0});
-    this.hours.push({bSup_equipmentOpt: 0});
-    this.hours.push({bSup_maintenance: 0});
-    this.hours.push({bSup_manufacturing: 0});
-    this.hours.push({bSup_operations: 0});
-    this.hours.push({bSup_techServices: 0});
-    this.hours.push({bSup_zeroHarm: 0});
-    this.hours.push({other_administration: 0});
-    this.hours.push({other_attendingSite: 0});
-    this.hours.push({other_audit: 0});
-    this.hours.push({other_infoTech: 0});
-    this.hours.push({other_leavePlanned: 0});
-    this.hours.push({other_leaveUnPlanned: 0});
-    this.hours.push({other_meetings: 0});
-    this.hours.push({other_training: 0});
-    this.hours.push({other_travel: 0});
+    this.hours.push({type: 'Project', total: 0});
+    this.hours.push({type: 'bSup_bDev', total: 0});
+    this.hours.push({type: 'bSup_commercial', total: 0});
+    this.hours.push({type: 'bSup_equipmentOpt', total: 0});
+    this.hours.push({type: 'bSup_maintenance', total: 0});
+    this.hours.push({type: 'bSup_manufacturing', total: 0});
+    this.hours.push({type: 'bSup_operations', total: 0});
+    this.hours.push({type: 'bSup_techServices', total: 0});
+    this.hours.push({type: 'bSup_zeroHarm', total: 0});
+    this.hours.push({type: 'other_administration', total: 0});
+    this.hours.push({type: 'other_attendingSite', total: 0});
+    this.hours.push({type: 'other_audit', total: 0});
+    this.hours.push({type: 'other_infoTech', total: 0});
+    this.hours.push({type: 'other_leavePlanned', total: 0});
+    this.hours.push({type: 'other_leaveUnPlanned', total: 0});
+    this.hours.push({type: 'other_meetings', total: 0});
+    this.hours.push({type: 'other_training', total: 0});
+    this.hours.push({type: 'other_travel', total: 0});
   next();
 });
 
