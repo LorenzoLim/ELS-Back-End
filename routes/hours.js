@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get('/', (req, res) => {
   User.find().then((users) =>{
-    res.json(users[6].hours);
+    res.json(users[0].hours);
   });
 });
 
