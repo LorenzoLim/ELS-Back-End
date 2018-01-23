@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
     type: req.body.selectedHourType,
     total: req.body.total,
     project_id: req.body.selectedProject,
-    userId: req.body.userId
+    user_id: req.body.userId
   }).then((hour) => {
     res.send(hour)
   })
