@@ -19,23 +19,23 @@ userSchema.plugin(passportLocalMongoose, {
 userSchema.pre("save",function(next) {
   if (this.hours.length == 0)
     this.hours.push({type: 'Project', total: 0});
-    this.hours.push({type: 'bSup_bDev', total: 0});
-    this.hours.push({type: 'bSup_commercial', total: 0});
-    this.hours.push({type: 'bSup_equipmentOpt', total: 0});
-    this.hours.push({type: 'bSup_maintenance', total: 0});
-    this.hours.push({type: 'bSup_manufacturing', total: 0});
-    this.hours.push({type: 'bSup_operations', total: 0});
-    this.hours.push({type: 'bSup_techServices', total: 0});
-    this.hours.push({type: 'bSup_zeroHarm', total: 0});
-    this.hours.push({type: 'other_administration', total: 0});
-    this.hours.push({type: 'other_attendingSite', total: 0});
-    this.hours.push({type: 'other_audit', total: 0});
-    this.hours.push({type: 'other_infoTech', total: 0});
-    this.hours.push({type: 'other_leavePlanned', total: 0});
-    this.hours.push({type: 'other_leaveUnPlanned', total: 0});
-    this.hours.push({type: 'other_meetings', total: 0});
-    this.hours.push({type: 'other_training', total: 0});
-    this.hours.push({type: 'other_travel', total: 0});
+    this.hours.push({type: 'Business Support - Business Development', total: 0});
+    this.hours.push({type: 'Business Support - Commercial', total: 0});
+    this.hours.push({type: 'Business Support - Equipment Optimization', total: 0});
+    this.hours.push({type: 'Business Support - Maintenance', total: 0});
+    this.hours.push({type: 'Business Support - Manufacturing', total: 0});
+    this.hours.push({type: 'Business Support - Operations', total: 0});
+    this.hours.push({type: 'Business Support - Technical Services', total: 0});
+    this.hours.push({type: 'Business Support - Zero Harm', total: 0});
+    this.hours.push({type: 'Other - Administration', total: 0});
+    this.hours.push({type: 'Other - Attending Site', total: 0});
+    this.hours.push({type: 'Other - Audit', total: 0});
+    this.hours.push({type: 'Other - Information Technology', total: 0});
+    this.hours.push({type: 'Other - Leave-Planned (A/L, Public, Holiday)', total: 0});
+    this.hours.push({type: 'Other - Leave-Unplanned(Sick, Family Leave)', total: 0});
+    this.hours.push({type: 'Other - Meetings', total: 0});
+    this.hours.push({type: 'Other - Training', total: 0});
+    this.hours.push({type: 'Other - Travel', total: 0});
   next();
 });
 
