@@ -19,9 +19,9 @@ router.get('/:id', (req, res) =>{
 router.post('/', (req, res) => {
   Hour.create({
     type: req.body.selectedHourType,
-    total: req.body.totalTime,
+    total: req.body.total,
     project_id: req.body.selectedProject,
-    email: req.body.email
+    userId: req.body.userId
   }).then((hour) => {
     res.send(hour)
   })

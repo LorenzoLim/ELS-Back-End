@@ -57,7 +57,6 @@ passport.use(new PassportJwt.Strategy({
 const signJWTForUser = (req, res) => {
   // Get the user (either just logged in or just signed up)
   const user = req.user
-
   // Create a signed token
   const token = JWT.sign(
     {
