@@ -5,7 +5,6 @@ var router = express.Router();
 /* Find user by ID */
 router.get('/:id', (req, res) =>{
   User.findById(req.params.id).then((user) =>{
-    console.log(user);
     res.send(user);
   })
 });
