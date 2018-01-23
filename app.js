@@ -12,6 +12,7 @@ const cors = require('cors');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const projects = require('./routes/projects');
+const hours = require('./routes/hours');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/projects', projects);
+app.use('/hours', hours);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
