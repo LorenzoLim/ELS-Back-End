@@ -16,11 +16,6 @@ router.get('/', (req, res) => {
           res.json(final);
         })
       })
-      // let total = 0;
-      // hours.forEach((hour) => {
-      //   total = total + hour.total
-      // })
-      // res.json(hours);
     })
   }else{
     Hour.find().populate('project_id').populate('user_id').then((hours) =>{
