@@ -31,14 +31,14 @@ router.post('/', (req, res) => {
 });
 
 /* Update data from database */
-router.put('/:id', function (req,res) {
+router.put('/:id', (req,res) => {
   Project.findOneAndUpdate(req.params.id, req.body).then((project) =>{
     res.send(project);
   });
 });
 
 /* Delete data from database */
-router.delete('/:id', function (req,res) {
+router.delete('/:id', (req,res) => {
   Project.findByIdAndRemove(req.params.id).then((project) =>{
     res.send('Deleted');
   });

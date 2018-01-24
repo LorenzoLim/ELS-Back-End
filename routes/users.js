@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 /* Update data from database */
-router.put('/:id', function (req,res) {
+router.put('/:id', (req,res) => {
   console.log(req.params.id, 'User ID');
   User.findOneAndUpdate({_id: req.params.id}, req.body).then((user) =>{
     // user.startTime = Date.now();
@@ -32,7 +32,7 @@ router.put('/:id', function (req,res) {
 });
 
 /* Delete data from database */
-router.delete('/:id', function (req,res) {
+router.delete('/:id', (req,res) => {
   User.findByIdAndRemove(req.params.id).then((user) =>{
     res.send('Deleted');
   });
