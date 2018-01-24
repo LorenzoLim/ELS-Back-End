@@ -3,12 +3,25 @@ const User = require('../models/User');
 const Hour = require('../models/Hour');
 var csv = require('express-csv');
 const Project = require('../models/Project');
+var ObjectId = require('mongoose').Types.ObjectId;
 var router = express.Router();
 
 router.get('/', (req, res) => {
-  Hour.find().populate('project_id').populate('user_id').then((hours) =>{
-    res.json(hours);
-  });
+  if(req.query.projectId){
+    Hour.aggregate([
+      {"$match" : {"project_id": req.query.projectId}}
+    ]).then((hours) => {
+      let total = 0;
+      hours.forEach((hour) => {
+        total = total + hour.total
+      })
+      res.json(total);
+    })
+  }else{
+    Hour.find().populate('project_id').populate('user_id').then((hours) =>{
+      res.json(hours);
+    });
+  }
 });
 
 router.get('/:id', (req, res) =>{
