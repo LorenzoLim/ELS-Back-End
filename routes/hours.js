@@ -11,11 +11,16 @@ router.get('/', (req, res) => {
     Hour.aggregate([
       {"$match" : {"project_id": req.query.projectId}}
     ]).then((hours) => {
-      let total = 0;
-      hours.forEach((hour) => {
-        total = total + hour.total
+      User.populate(hours, {path: "user_id"}).then((result) => {
+        Hour.populate(result, {path: "project_id"}).then((final) => {
+          res.json(final);
+        })
       })
-      res.json(total);
+      // let total = 0;
+      // hours.forEach((hour) => {
+      //   total = total + hour.total
+      // })
+      // res.json(hours);
     })
   }else{
     Hour.find().populate('project_id').populate('user_id').then((hours) =>{
