@@ -1,11 +1,12 @@
 var express = require('express');
 const User = require('../models/User');
 const Hour = require('../models/Hour');
+var csv = require('express-csv');
 const Project = require('../models/Project');
 var router = express.Router();
 
 router.get('/', (req, res) => {
-  Hour.find().then((hours) =>{
+  Hour.find().populate('project_id').populate('user_id').then((hours) =>{
     res.json(hours);
   });
 });
