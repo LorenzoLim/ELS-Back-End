@@ -1,9 +1,9 @@
-var express = require('express');
-var csv = require('express-csv');
+const express = require('express');
+const csv = require('express-csv');
 const Project = require('../models/Project');
 const User = require('../models/User');
 const Hour = require('../models/Hour');
-var router = express.Router();
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

@@ -1,6 +1,6 @@
-var express = require('express');
+const express = require('express');
 const User = require('../models/User');
-var router = express.Router();
+const router = express.Router();
 
 /* Find user by ID */
 router.get('/:id', (req, res) =>{

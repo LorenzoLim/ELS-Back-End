@@ -1,10 +1,10 @@
-var express = require('express');
+const express = require('express');
 const User = require('../models/User');
 const Hour = require('../models/Hour');
-var csv = require('express-csv');
+const csv = require('express-csv');
 const Project = require('../models/Project');
-var ObjectId = require('mongoose').Types.ObjectId;
-var router = express.Router();
+const ObjectId = require('mongoose').Types.ObjectId;
+const router = express.Router();
 
 router.get('/', (req, res) => {
   if(req.query.projectId){
