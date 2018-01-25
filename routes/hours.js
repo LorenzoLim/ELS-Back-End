@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   if(req.query.projectId){
     Hour.aggregate([
-      {"$match" : {"project_id": req.query.projectId}}
+      {"$match" : {"project_id": new ObjectId(req.query.projectId)}}
     ]).then((hours) => {
       User.populate(hours, {path: "user_id"}).then((result) => {
         Hour.populate(result, {path: "project_id"}).then((final) => {
