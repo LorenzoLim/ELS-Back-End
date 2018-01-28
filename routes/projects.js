@@ -1,12 +1,21 @@
 const express = require('express');
 const Project = require('../models/Project');
+const ObjectId = require('mongoose').Types.ObjectId;
 const router = express.Router();
 
 /* Returns all projects */
 router.get('/', (req, res) => {
-  Project.find().populate('projectUsers').then((project) =>{
-    res.json(project);
-  });
+  if(req.query.userId){
+    Project.aggregate([
+      {"$match" : {"projectUsers": new ObjectId(req.query.userId)}}
+    ]).then((projects) => {
+      res.json(projects)
+    })
+  }else{
+    Project.find().populate('projectUsers').then((project) =>{
+      res.json(project);
+    });
+  }
 });
 
 /* Find projects by ID */
